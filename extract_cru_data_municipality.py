@@ -2,7 +2,7 @@
 """
 Created on Wed Aug 25 16:22:57 2021
 
-@author: Johannes H. Uhl, Unicersity of Colorado Boulder, USA.
+@author: Johannes H. Uhl, University of Colorado Boulder, USA.
 """
 
 import os,sys
