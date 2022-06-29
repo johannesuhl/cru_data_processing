@@ -29,13 +29,18 @@ gdf['lat']=gdf.geometry.y
 gdf['lon']=gdf.geometry.x
 
 ## control variables for individual code blocks:
-vis=False ### requires gdal, optional code to visualize the data, optionally for a subset, for each point in time
+vis=True ### requires gdal, optional code to visualize the data, 
+## optionally for a subset, for each point in time, and creates an animated gif.
+
 extract=False ### writes out municipality level data to csv file for each point in time.
-netcdf2geotiff=True### requires gdal, optional code to export one or all epochs to geotiff
+
+netcdf2geotiff=False### requires gdal, optional code to export one or all epochs to geotiff
 
 if vis:######################################################
     from osgeo import gdal
+    import imageio
     mx_subset_imgcoo=[110,150,120,200] ### Mexico bounding box
+    filenames = []
     for var in cru_vars:
         infile='NETCDF:"'+r'.\cru_ts4.05.1901.2020.%s.dat.nc\cru_ts4.05.1901.2020.%s.dat.nc":%s' %(var,var,var)
         ds=gdal.Open(infile)
@@ -50,15 +55,34 @@ if vis:######################################################
         epochs=len(timevalues)
         for t in np.arange(0,epochs):
             currarr=arr[t,:,:]
-            currarr[currarr>9e+36]=0
+            currarr[currarr>9e+36]=0           
+            currarr=currarr[mx_subset_imgcoo[0]:mx_subset_imgcoo[1],mx_subset_imgcoo[2]:mx_subset_imgcoo[3]] 
             
-            currarr=currarr[mx_subset_imgcoo[0]:mx_subset_imgcoo[1],mx_subset_imgcoo[2]:mx_subset_imgcoo[3]]
-            
-            plt.imshow(currarr,cmap='nipy_spectral')
             currdate=datetime_vals[t]
             currdate_fmt = '%s/%s/%s' %(currdate.year,currdate.month,currdate.day)
-            plt.title(currdate_fmt)
-            plt.show()
+            
+            fig,ax=plt.subplots()
+            img=ax.imshow(currarr,cmap='nipy_spectral',vmin=0,vmax=30)
+            ax.set_xlabel('Data source: CRU TS monthly high-resolution gridded multivariate climate dataset', fontsize=7)
+            plt.title('Average temperature '+currdate_fmt)
+            fig.colorbar(img,fraction=0.025)
+            plt.show() 
+            filename = '%s.png' %currdate_fmt.replace('/','')
+            fig.savefig(filename)
+            plt.close()
+            filenames.append(filename)            
+            
+    # build gif
+    with imageio.get_writer('cru_tmp_animated.gif', mode='I') as writer:
+        for filename in filenames:
+            if os.path.exists(filename):
+                image = imageio.imread(filename)
+                writer.append_data(image)
+        
+    # Remove files
+    for filename in set(filenames):
+        if os.path.exists(filename):
+            os.remove(filename)
 
 if extract:######################################################
     for var in cru_vars:
