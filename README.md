@@ -14,3 +14,5 @@ Optionally, by setting vis=True, the script will plot the data for each point in
 By setting netcdf2geotiff=True, the script will export the CRU data to GeoTIFF for a given (or all) point in time.
 
 <img width="750" src="https://github.com/johannesuhl/cru_data_processing/blob/main/cru_tmp_animated.gif">
+<img width="750" src="https://www.dropbox.com/s/7d2xnm45rqd0n80/cru_tmp_animated_global.gif">
+
