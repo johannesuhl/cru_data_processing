@@ -15,7 +15,7 @@ The script extract_cru_data_municipality.py will read the municipalities shapefi
 
 ```vis=True```:
 Optionally, the script will plot the data for each point in time and create an animated GIF.
-The user can constrain the visualization to a specific coordinate range:
+The user can constrain the visualization to a specific coordinate range (note that these coordinates are image coordinates, not world coordinates):
 ```
 currarr=currarr[mx_subset_imgcoo[0]:mx_subset_imgcoo[1],mx_subset_imgcoo[2]:mx_subset_imgcoo[3]]
 ```
