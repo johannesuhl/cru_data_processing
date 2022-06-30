@@ -39,7 +39,7 @@ netcdf2geotiff=False### requires gdal, optional code to export one or all epochs
 if vis:######################################################
     from osgeo import gdal
     import imageio
-    mx_subset_imgcoo=[110,150,120,200] ### Mexico bounding box
+    mx_subset_imgcoo=[110,150,120,200] ### Mexico bounding box (in grid cell coordinates, not world coordinates!)
     filenames = []
     for var in cru_vars:
         infile='NETCDF:"'+r'.\cru_ts4.05.1901.2020.%s.dat.nc\cru_ts4.05.1901.2020.%s.dat.nc":%s' %(var,var,var)
@@ -119,7 +119,7 @@ if extract:######################################################
     
 if netcdf2geotiff: #########################################################
     from osgeo import gdal
-    mx_subset_imgcoo=[110,150,120,200] ### Mexico bounding box
+    mx_subset_imgcoo=[110,150,120,200] ### Mexico bounding box (in grid cell coordinates, not world coordinates!)
 
     date_of_interest = datetime.datetime(1970, 10, 16, 0, 0)
       
