@@ -1,6 +1,7 @@
 # CRU data processing
-A python script to access, visualize and extract time series of CRU long-term climate data at discrete locations.
+### A python script to access, visualize and extract time series of CRU long-term climate data at discrete locations.
 
+### CRU average temperature (1900-2020):
 <img width="750" src="https://github.com/johannesuhl/cru_data_processing/blob/main/cru_tmp_animated_global.gif">
 
 This script aims to visualize and extract time series of long-term climate data at discrete spatial locations from the CRU TS monthly high-resolution gridded multivariate climate dataset (Harris et al. 2020; https://www.nature.com/articles/s41597-020-0453-3).
@@ -14,12 +15,22 @@ The script extract_cru_data_municipality.py will read the municipalities shapefi
 
 ```vis=True```:
 Optionally, the script will plot the data for each point in time and create an animated GIF.
-The user can constrain the visualization to a specific coordinate range or season:
+The user can constrain the visualization to a specific coordinate range:
+```
+currarr=currarr[mx_subset_imgcoo[0]:mx_subset_imgcoo[1],mx_subset_imgcoo[2]:mx_subset_imgcoo[3]]
+```
+or to a specific month:
+```
+if not currdate.month in [8]:
+    continue
+```
 
+```netcdf2geotiff=True```:By setting netcdf2geotiff=True, the script will export the CRU data to GeoTIFF for a given (or all) point in time.
 
-
-By setting netcdf2geotiff=True, the script will export the CRU data to GeoTIFF for a given (or all) point in time.
-
+### CRU temperature data visualized for Mexico only (1900-1910):
 <img width="750" src="https://github.com/johannesuhl/cru_data_processing/blob/main/cru_tmp_animated.gif">
+
+### CRU temperature data visualized for the month of August only (1900-2020):
+<img width="750" src="https://github.com/johannesuhl/cru_data_processing/blob/main/cru_tmp_animated_August.gif">
 
 
