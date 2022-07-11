@@ -6,7 +6,7 @@
 
 These scripts aim to visualize and extract time series of long-term climate data at discrete spatial locations from the CRU TS monthly high-resolution gridded multivariate climate dataset (Harris et al. 2020; https://www.nature.com/articles/s41597-020-0453-3).
 
-cru_gif.py will create the above visualization, and extract_cru_data_municipality.py will extract CRU time series for specific locations, do some conversions and also visualize the data.
+```cru_gif.py``` will create the above visualization, and ```extract_cru_data_municipality.py``` will extract CRU time series for specific locations, do some conversions and also visualize the data.
 
 This repository contains a point shapefile holding the centroids of municipalities in Mexico (mex_admbnda_adm2_govmex_20210618_pt.shp, adopted from data obtained at https://data.humdata.org/dataset/mexican-administrative-level-0-country-1-estado-and-2-municipio-boundary-polygons).
 
