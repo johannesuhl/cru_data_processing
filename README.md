@@ -1,7 +1,7 @@
 # CRU data processing
 ### A python script to access, visualize and extract time series of CRU long-term climate data globally, regionally, and at discrete locations.
 
-### CRU average temperature (1900-2020):
+### CRU average temperature (1901-2020):
 <img width="450" src="https://github.com/johannesuhl/cru_data_processing/blob/main/cru_tmp_animated_global2.gif">
 
 These scripts aim to visualize and extract time series of long-term climate data at discrete spatial locations from the CRU TS monthly high-resolution gridded multivariate climate dataset (Harris et al. 2020; https://www.nature.com/articles/s41597-020-0453-3).
