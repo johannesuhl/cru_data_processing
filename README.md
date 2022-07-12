@@ -35,4 +35,7 @@ if not currdate.month in [8]:
 ### CRU temperature data visualized for the month of August only (1900-2020):
 <img width="750" src="https://github.com/johannesuhl/cru_data_processing/blob/main/cru_tmp_animated_August.gif">
 
+###References:
+
+Harris, I., Osborn, T. J., Jones, P., & Lister, D. (2020). Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset. Scientific data, 7(1), 1-18. https://doi.org/10.1038/s41597-020-0453-3
 
